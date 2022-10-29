@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<h1>Template Aulas</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quae asperiores eos praesentium, exercitationem, explicabo enim ab at blanditiis in sit nobis quas aut aspernatur adipisci quisquam doloremque officiis quos.</p>
+
+<ul>
+    {% for aula in  projects %}
+        <a href="{% url 'aula' aula.id %}" class="text-secondary">
+            <li> Title: {{aula.title}} --- {{aula.description}}</li>
+        </a>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
