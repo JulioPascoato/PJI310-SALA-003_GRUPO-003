@@ -1,35 +1,27 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Aula
+from .forms import AulaForm
 # Create your views here.
-projectsList = [
-
-    {'id': '1', 'title': 'Ecommerce Website',
-        'description': 'Fully functional ecommerce website'},
-
-    {'id': '2', 'title': 'Portfolio Website',
-        'description': 'A personal website to write articles and display work'},
-
-    {'id': '3', 'title': 'Social Network',
-        'description': 'An open source project built by the community'}
-
-]
 
 
 def aulas(request):
-   
+
+    aulas = Aula.objects.all()
     context = {
-        'projects': projectsList
+        'aulas': aulas
     }
 
     return render(request, 'aulas/aulas.html', context)
 
 
 def aula(request, pk):
-    aulaObj = None
-    for i in projectsList:
-        if i['id'] == pk:
-            aulaObj = i
-
+    aulaObj = Aula.objects.get(id=pk)
     return render(request, 'aulas/aula-individual.html', {'aula': aulaObj})
+
+
+def novaAula(request):
+    form = AulaForm()
+    context = {'form': form}
+    return render(request, 'aulas/aula_form.html', context)

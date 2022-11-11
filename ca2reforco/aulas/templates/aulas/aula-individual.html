@@ -2,8 +2,33 @@
 
 {% block content %}
 
-    <h1>{{aula.title}}</h1>
-    <br>
-    <p>{{aula.description}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h5 class="text-uppercase mb-3 font-weight-bold singleClass__subtitle">Tools & Stacks</h5>
+      <p class="mb-5 ">{{aula.professor.nome}}</p>
+    </div>
+
+
+    <div class="col pr-5">
+
+      <h3 class="mb-4 text-dark font-weight-bold">{{aula.nome}}</h3>
+      <h5 class="text-uppercase mb-3 font-weight-bold singleClass__subtitle">Sobre a aula</h5>
+
+      <div class="container ">
+        <p class="mb-5 ">{{aula.conteudo}}</p>
+      </div>
+      
+      
+      <hr>
+      
+      <h5 class="text-uppercase mb-3 font-weight-bold singleClass__subtitle">Data e horário</h5>
+      <h6>{{aula.data_aula}}</h6>
+   
+    </div>
+
+    
+  
+</div>
 
 {% endblock content %}
