@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aulas.apps.AulasConfig',
     'professores.apps.ProfessoresConfig',
-    
+    'rangefilter'
+
 ]
 
 MIDDLEWARE = [

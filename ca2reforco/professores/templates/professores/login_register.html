@@ -1,0 +1,85 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+
+
+    {% if page == 'register' %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 m-auto">
+                    <div class="card m-auto">
+                        <div class="card-body p-5">
+                                <div class="container text-center">
+                                    <i class="fas fa-chalkboard-teacher fa-5x"></i>
+                                    <h3 class="my-2">Cadastrar nova conta</h3>
+                                    <p>Criar uma conta de professor</p>
+                                </div>
+
+                    
+                        <form action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+                                                  
+                        {% for field in  form %}
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="{{ field.auto_id }}">{{field.label}}</label>
+                                {{field}}
+                            </div>
+                        {% endfor %}    
+
+                        <input class="btn btn-warning" type="submit" value="Criar conta" />
+                        </form>
+
+                        <p>Já possui uma conta? <a class="font-weight-bold text-muted" href="{% url 'login' %}">Login</a></p>
+
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+       
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 m-auto">
+                    <div class="card m-auto">
+                        <div class="card-body p-5">
+                                <div class="container text-center">
+                                    <i class="fas fa-chalkboard-teacher fa-5x"></i>
+                                    <h3 class="my-2">Login Professor</h3>
+                                    <p>Olá professor, Seja bem-vindo!</p>
+                                </div>
+
+                    
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="username">Nome do usuário:</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Usuário" autofocus>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="password">Senha:</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Digite a senha">
+                            </div>
+                            
+                            <div class="container my-4 px-0 d-flex justify-content-between">
+                                    <input class="btn btn-warning" type="submit" value="Login" />
+                                    <a class="text-muted" href="forgetpassword.html">Esqueceu a senha?</a>
+                            </div>
+                            <p>Não possui uma conta? <a class="font-weight-bold text-muted" href="{% url 'register' %}">Criar conta</a></p>
+                        </form>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    {% endif %}
+
+    
+    
+</div>
+{% endblock content %}
