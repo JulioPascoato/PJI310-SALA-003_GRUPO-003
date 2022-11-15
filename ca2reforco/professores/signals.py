@@ -17,10 +17,21 @@ def novoProfessor(sender, instance, created, **kwargs):
         )
 
 
+def atualizarProfessor(sender, instance, created, **kwargs):
+    professor = instance
+    user = professor.user
+    if created == False:
+        user.first_name = professor.nome
+        user.username = professor.username
+        user.email = professor.email
+        user.save()
+
+
 def deleteUser(sender, instance, **kwargs):
     user = instance.user
     user.delete()
 
 
 post_save.connect(novoProfessor, sender=User)
+post_save.connect(atualizarProfessor, sender=Professor)
 post_delete.connect(deleteUser, sender=Professor)

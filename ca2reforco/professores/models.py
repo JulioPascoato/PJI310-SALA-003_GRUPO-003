@@ -34,7 +34,7 @@ class Professor(models.Model):
 
 
 class Habilidade(models.Model):
-    professor = models.ForeignKey(
+    owner = models.ForeignKey(
         Professor, on_delete=models.CASCADE, null=True, blank=True)
     nome = models.CharField(max_length=200, blank=True, null=True)
     descricao = models.TextField(null=True, blank=True)

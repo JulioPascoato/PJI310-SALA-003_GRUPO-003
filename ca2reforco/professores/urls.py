@@ -9,5 +9,7 @@ urlpatterns = [
 
     path('', views.professores, name="professores"),
     path('professor/<str:pk>', views.professor, name="professor"),
-    path('account/', views.userAccount, name="account")
+    path('account/', views.userAccount, name="account"),
+    path('edit-account/', views.editAccount, name="edit-account"),
+    path('create-skill/', views.createSkill, name="create-skill")
 ]

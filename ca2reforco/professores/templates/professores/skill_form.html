@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 m-auto">
+                    <div class="card m-auto">
+                        <div class="card-body p-5">
+                                <div class="container text-left mb-4 p-0">
+
+                                    <div class="d-inline-flex rounded-circle px-2 skill__back ">
+                                        <a class="text-warning d-inline-flex font-weight-bold text-decoration-none" href="{% url 'account' %}"><i class="fas fa-angle-left fa-2x"></i></a>
+                                    </div>
+                                    
+                                </div>
+
+                    
+                                <form action="{% url 'create-skill' %}" method="post">
+                                    {% csrf_token %}
+                                                        
+                                    {% for field in  form %}
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="{{ field.auto_id }}">{{field.label}}</label>
+                                            {{field}}
+                                        </div>
+                                    {% endfor %}    
+
+                                    <input class="btn btn-warning" type="submit" value="Atualizar" />
+                                </form>
+                      
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+       
+      
+    
+</div>
+
+{% endblock content %}

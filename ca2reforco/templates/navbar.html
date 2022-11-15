@@ -17,6 +17,13 @@
         <a class="nav-link text-warning" href="{% url 'professores' %}">Professores</a>
       </li>
 
+
+      {% if request.user.is_authenticated %}
+      <li class="nav-item mx-2">
+        <a class="nav-link text-warning" href="{% url 'account' %}">Meu perfil</a>
+      </li>
+      {% endif %}
+
       {% if request.user.is_authenticated %}
           <li class="nav-item mx-2">
             <a class="btn btn-outline-warning" href="{% url 'logout' %}">Logout</a>

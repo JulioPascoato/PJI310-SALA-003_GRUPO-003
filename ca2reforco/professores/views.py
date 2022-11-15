@@ -6,8 +6,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import Professor
 
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfessorForm, HabilidadeForm
 
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -64,7 +65,7 @@ def registerUser(request):
             messages.success(request, 'Sua nova conta foi criada com sucesso!')
 
             login(request, user)
-            return redirect('professores')
+            return redirect('edit-account')
         else:
             messages.error(request, 'Ocorreu um erro ao criar a conta!')
 
@@ -90,6 +91,52 @@ def professor(request, pk):
     return render(request, 'professores/profile.html', content)
 
 
+@login_required(login_url='login')
 def userAccount(request):
-    context = {}
+
+    profile = request.user.professor
+
+    context = {'professor': profile}
     return render(request, 'professores/account.html', context)
+
+
+@login_required(login_url='login')
+def editAccount(request):
+    profile = request.user.professor
+
+    form = ProfessorForm(instance=profile)
+
+    if request.method == "POST":
+        form = ProfessorForm(request.POST, request.FILES, instance=profile)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('account')
+
+    context = {'form': form}
+    return render(request, 'professores/profile_form.html', context)
+
+
+@login_required(login_url='login')
+def createSkill(request):
+
+    profile = request.user.professor
+    print(profile)
+    form = HabilidadeForm()
+
+    if request.method == 'POST':
+
+        form = HabilidadeForm(request.POST)
+
+        if form.is_valid():
+            habilidade = form.save(commit=False)
+            habilidade.professor = profile
+            # habilidade.save()
+
+            print(habilidade.professor)
+
+            return redirect('account')
+
+    context = {'form': form}
+    return render(request, 'professores/skill_form.html', context)

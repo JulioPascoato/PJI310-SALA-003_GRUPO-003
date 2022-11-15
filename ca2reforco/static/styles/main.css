@@ -3,6 +3,12 @@
   box-shadow: 0 0 0 0.1rem #d47603 !important;
 }
 
+.table tr:last-child {
+  border: none !important;
+}
+
+
+
 .text-warning {
   color: #ff9200 !important;
 }
@@ -56,4 +62,9 @@ a.nav-link.text-warning:hover {
 
 .skill__back {
   background-color: #fcebd6;
+}
+
+.plus {
+  font-size: 5rem !important;
+  background-color: #ededfd;
 }
