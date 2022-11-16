@@ -56,8 +56,8 @@
                       </td>
 
                       <td class="align-middle text-right">
-                        <a class="rounded-pill d-inline-flex py-1 px-4 my-2 text-warning skill__back font-weight-bold" href="#">Editar</a>
-                        <a class="rounded-pill d-inline-flex py-1 px-4 text-warning skill__back font-weight-bold" href="#">Excluir</a>
+                        <a class="rounded-pill d-inline-flex py-1 px-4 my-2 text-warning skill__back font-weight-bold" href="{% url 'update-skill' skill.id %}">Editar</a>
+                        <a class="rounded-pill d-inline-flex py-1 px-4 text-warning skill__back font-weight-bold" href="{% url 'delete-skill' skill.id %}?next=/account">Excluir</a>
                       </td>
 
                     </tr>

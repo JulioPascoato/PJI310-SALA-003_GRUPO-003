@@ -131,12 +131,46 @@ def createSkill(request):
 
         if form.is_valid():
             habilidade = form.save(commit=False)
-            habilidade.professor = profile
-            # habilidade.save()
-
-            print(habilidade.professor)
+            habilidade.owner = profile
+            habilidade.save()
 
             return redirect('account')
 
     context = {'form': form}
     return render(request, 'professores/skill_form.html', context)
+
+
+@login_required(login_url='login')
+def updateSkill(request, pk):
+
+    profile = request.user.professor
+    habilidade = profile.habilidade_set.get(id=pk)
+
+    form = HabilidadeForm(instance=habilidade)
+
+    if request.method == 'POST':
+
+        form = HabilidadeForm(request.POST, instance=habilidade)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Habilidade atualizada com sucesso!')
+            return redirect('account')
+
+    context = {'form': form}
+    return render(request, 'professores/skill_form.html', context)
+
+
+@login_required(login_url='login')
+def deleteSkill(request, pk):
+
+    profile = request.user.professor
+    habilidade = profile.habilidade_set.get(id=pk)
+
+    if request.method == 'POST':
+        habilidade.delete()
+        messages.success(request, 'Habilidade excluida com sucesso!')
+        return redirect('account')
+
+    context = {'object': habilidade}
+    return render(request, 'delete_template.html', context)

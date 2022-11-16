@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aulas.apps.AulasConfig',
     'professores.apps.ProfessoresConfig',
+    'alunos.apps.AlunosConfig',
     'rangefilter'
 
 ]
