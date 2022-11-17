@@ -1,0 +1,82 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12 col-lg-4 mb-5">
+      <div class="card text-center mr-2">
+        <div class="card-body p-5">
+          <img class="rounded-circle border border-warning w-75" src="{{aluno.imagem_perfil.url}}" />
+          <h3 class="text-dark font-weight-bold mt-4">{{aluno.nome}}</h3>
+          <p class="font-weight-bolder">Colégio: {{aluno.colegio}}</p>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col pr-5">
+
+      <div class="container mb-5">
+        <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Sobre Mim</h4>
+        <p class="text-justify"> {{aluno.perfil}}
+
+        </p>
+
+      </div>
+
+      <div class="container pr-0">
+        <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Informações</h4>
+
+        <div class="container px-0 mb-5">
+
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Data de nascimento</h6>
+            <p>{{aluno.data_nascimento}}</p>
+          </div>
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Endereço</h6>
+            <p>{{aluno.endereco|linebreaksbr}}</p>
+          </div>
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Contato</h6>
+            <p>Celular: {{aluno.celular}}</p>
+            <p>Telefone: {{aluno.telefone}}</p>
+          </div>
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Dados escolares</h6>
+            <p>Colégio: {{aluno.colegio}} -
+              Série: {{aluno.serie}}</p>
+          </div>
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Dados dos responsaveis</h6>
+            <p>{{aluno.dados_responsavel_1|linebreaksbr}}</p>
+            <p>{{aluno.dados_responsavel_2|linebreaksbr}}</p>
+          </div>
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Dados fiscais</h6>
+            <p>{{aluno.dados_nf|linebreaksbr}}</p>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>
+{% endblock content %}

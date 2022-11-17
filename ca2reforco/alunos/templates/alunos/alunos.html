@@ -2,69 +2,68 @@
 
 {% block content %}
 
-    <div class="container">
+<div class="container">
 
-     <div class="container p-5 mb-4 search-class">
+    <div class="container p-5 mb-4 search-class">
         <div class="container text-center mb-4">
-          <h2 class="text-uppercase">Busque por <span class="text-dark font-weight-bold">Professor</span></h2>
+            <h2 class="text-uppercase">Busque por <span class="text-dark font-weight-bold">Alunos</span></h2>
         </div>
 
         <form action="#" method="get">
-                <div class="row mx-5 ">
-                        <div class="col-md-8 mb-3">
-                            <input class="form-control " id="formInput#search" type="text" name="text" placeholder="Busque pelo nome do professor" />
-                        </div>
-                        <div class="col-md-4">
-                            <input class="btn btn-warning px-5 " type="submit" value="Buscar" />
-                        </div>
+            <div class="row mx-5 ">
+                <div class="col-md-8 mb-3">
+                    <input class="form-control " id="formInput#search" type="text" name="text"
+                        placeholder="Busque pelo nome do aluno" />
                 </div>
-        
-            
+                <div class="col-md-4">
+                    <input class="btn btn-warning px-5 " type="submit" value="Buscar" />
+                </div>
+            </div>
+
+
         </form>
     </div>
 
-<div class="container px-0">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-    
-    {% for professor in  professores %}
+    <div class="container px-0">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
-    <div class="col mb-4">
+            {% for aluno in alunos %}
 
-            <a class="text-muted text-decoration-none" href="{% url 'professor' professor.id %}">
-                <div class="card h-100 ">
-                    <div class="card-body">
-                        <div class="container px-0 d-flex mb-3">
-                            <img class="avatar avatar--md mr-2" src="{{professor.imagem_perfil.url}}" />
-                            <div class="container p-0">
-                                <h5 class="text-dark font-weight-bold my-0">{{professor.nome}}</h5>
-                                <div class="font-weight-bolder">{{professor.introducao|slice:"45"}}</div> 
+            <div class="col mb-4">
+
+                <a class="text-muted text-decoration-none" href="{% url 'aluno' aluno.id %}">
+                    <div class="card h-100 ">
+                        <div class="card-body">
+                            <div class="container px-0 d-flex mb-3">
+                                <img class="avatar avatar--md mr-2" src="{{aluno.imagem_perfil.url}}" />
+                                <div class="container p-0">
+                                    <h5 class="text-dark font-weight-bold my-0">{{aluno.nome}}</h5>
+                                    <div class="font-weight-bolder">Colegio: {{aluno.colegio}} <br> Série:
+                                        {{aluno.serie}}</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="container text-justify px-0 py-0">{{professor.bio|slice:"150"}}</div>
+                            <div class="container text-justify px-0 py-0">{{aluno.perfil|slice:"150"}}
 
-                        <div class="container pl-0 mt-3">
-                            {% for skill in professor.habilidade_set.all %}
-                            <span class="rounded-pill d-inline-flex py-1 px-2 mb-2 search-class font-weight-bold">
-                                {{skill.nome|title}}
-                            </span>
-                            {% endfor %}    
-                        </div>
+                            </div>
 
-            
+
+
+
+
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+
+            {% endfor %}
+
+
         </div>
-        
-    {% endfor %}
-    
-    
-  </div>
-</div>
-
-    
-    
-    
-
     </div>
+
+
+
+
+
+</div>
 {% endblock content %}
