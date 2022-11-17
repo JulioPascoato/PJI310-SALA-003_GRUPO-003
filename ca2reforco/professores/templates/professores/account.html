@@ -2,79 +2,83 @@
 
 {% block content %}
 
-    <div class="container">
+<div class="container">
   <div class="row">
 
     <div class="col-md-12 col-lg-4 mb-5">
       <div class="card text-center mr-2">
-            <div class="card-body p-5">
-              <div class="mb-4">
-                <a class="rounded-pill d-inline-flex py-1 px-4 text-warning skill__back font-weight-bold" href="{% url 'edit-account' %}">Editar</a>
-              </div>
-              
-              <img class="rounded-circle border border-warning w-75" src="{{professor.imagem_perfil.url}}" />
-              <h3 class="text-dark font-weight-bold mt-4">{{professor.nome}}</h3>
-              <p class="font-weight-bolder">{{professor.introducao}}</p>
-              <p class="mb-5">{{professor.localizacao}}</p>
+        <div class="card-body p-5">
+          <div class="mb-4">
+            <a class="rounded-pill d-inline-flex py-1 px-4 text-warning skill__back font-weight-bold"
+              href="{% url 'edit-account' %}">Editar</a>
+          </div>
 
-              <input type="submit" class="btn btn-dark btn-block btn-lg" value="Enviar Mensagem">
+          <img class="rounded-circle border border-warning w-75" src="{{professor.imagem_perfil.url}}" />
+          <h3 class="text-dark font-weight-bold mt-4">{{professor.nome}}</h3>
+          <p class="font-weight-bolder">{{professor.introducao}}</p>
+          <p class="mb-5">{{professor.localizacao}}</p>
 
-            </div>
+
+
         </div>
+      </div>
     </div>
 
 
     <div class="col pr-5">
 
-        <div class="container mb-5">
-            <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Sobre Mim</h4>
-            <p class="text-justify"> {{professor.bio}}
-              
-            </p>
+      <div class="container mb-5">
+        <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Sobre Mim</h4>
+        <p class="text-justify"> {{professor.bio}}
+
+        </p>
+      </div>
+
+      <div class="container pr-0">
+        <div class="container my-4 px-0 d-flex justify-content-between">
+          <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Habilidades</h4>
+          <div>
+            <a class="rounded-pill py-2 px-4 search-class font-weight-bold text-muted text-decoration-none"
+              href="{% url 'create-skill' %}"><i class="fas fa-plus mx-2"></i>Habilidades</a>
+          </div>
+
         </div>
-      
-        <div class="container pr-0">
-            <div class="container my-4 px-0 d-flex justify-content-between">
-              <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Habilidades</h4>
-              <div>
-                <a class="rounded-pill py-2 px-4 search-class font-weight-bold text-muted text-decoration-none" href="{% url 'create-skill' %}"><i class="fas fa-plus mx-2"></i>Habilidades</a>
-              </div>
-              
-            </div>
-            
-            
-            <div class="container p-4 bg-white">
 
-              <table class="table table-borderless">
-                <tbody>
 
-                  {% for skill in professor.habilidade_set.all %}
-                    <tr class="border-bottom">
-                      <td>
-                        <h5 class="text-dark mt-3" >{{skill.nome|title}}</h5>
-                        <div class="text-justify text-secondary mb-3">{{ skill.descricao|slice:"150"}}...</div>
-                      </td>
+        <div class="container p-4 bg-white">
 
-                      <td class="align-middle text-right">
-                        <a class="rounded-pill d-inline-flex py-1 px-4 my-2 text-warning skill__back font-weight-bold" href="{% url 'update-skill' skill.id %}">Editar</a>
-                        <a class="rounded-pill d-inline-flex py-1 px-4 text-warning skill__back font-weight-bold" href="{% url 'delete-skill' skill.id %}?next=/account">Excluir</a>
-                      </td>
+          <table class="table table-borderless">
+            <tbody>
 
-                    </tr>
-                  {% endfor %} 
-                </tbody>
-              </table>
+              {% for skill in professor.habilidade_set.all %}
+              <tr class="border-bottom">
+                <td>
+                  <h5 class="text-dark mt-3">{{skill.nome|title}}</h5>
+                  <div class="text-justify text-secondary mb-3">{{ skill.descricao|slice:"150"}}...</div>
+                </td>
 
-                           
-            
+                <td class="align-middle text-right">
+                  <a class="rounded-pill d-inline-flex py-1 px-4 my-2 text-warning skill__back font-weight-bold"
+                    href="{% url 'update-skill' skill.id %}">Editar</a>
+                  <a class="rounded-pill d-inline-flex py-1 px-4 text-warning skill__back font-weight-bold"
+                    href="{% url 'delete-skill' skill.id %}?next=/account">Excluir</a>
+                </td>
 
-            </div>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+
+
         </div>
-      
-   
+      </div>
+
+
     </div>
 
-    
-  
-</div>
-{% endblock content %}
+
+
+  </div>
+  {% endblock content %}

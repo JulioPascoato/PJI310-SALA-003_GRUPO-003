@@ -1,12 +1,16 @@
 from django.db import models
 import uuid
 from professores.models import Professor
+from alunos.models import Aluno
 
 # Create your models here.
 
 
 class Aula(models.Model):
-    professor = models.ForeignKey(Professor, null=True, blank=True, on_delete=models.RESTRICT)
+    professor = models.ForeignKey(
+        Professor, null=True, blank=True, on_delete=models.RESTRICT)
+    aluno = models.ForeignKey(
+        Aluno, null=True, blank=True, on_delete=models.RESTRICT)
     nome = models.CharField(max_length=200)
     data_aula = models.DateTimeField(null=True, blank=True)
     disciplina = models.CharField(max_length=2000, null=True, blank=True)

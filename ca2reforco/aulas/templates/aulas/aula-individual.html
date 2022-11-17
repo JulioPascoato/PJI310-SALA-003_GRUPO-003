@@ -4,31 +4,75 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <h5 class="text-uppercase mb-3 font-weight-bold singleClass__subtitle">Tools & Stacks</h5>
-      <p class="mb-5 ">{{aula.professor.nome}}</p>
+
+    <div class="col-md-12 col-lg-4 mb-5">
+      <div class="card text-center mr-2">
+        <div class="card-body p-5">
+          <i class="fa fa-people-arrows fa-9x"></i>
+          <h3 class="text-dark font-weight-bold mt-4">{{aula.disciplina}}</h3>
+          <div class="container font-weight-bold text-dark">
+            Professor: <a class=" text-muted" href="{% url 'professor' aula.professor.id %}">{{aula.professor.nome}}</a>
+          </div>
+
+          <div class="container font-weight-bold text-dark">
+            Aluno: <a class="text-muted" href="{% url 'aluno' aula.aluno.id %}">{{aula.aluno.nome}}</a>
+          </div>
+
+        </div>
+      </div>
     </div>
 
 
     <div class="col pr-5">
 
-      <h3 class="mb-4 text-dark font-weight-bold">{{aula.nome}}</h3>
-      <h5 class="text-uppercase mb-3 font-weight-bold singleClass__subtitle">Sobre a aula</h5>
+      <div class="container mb-5">
+        <h3 class="text-uppercase mb-4 font-weight-bold text-dark">{{aula.nome}}</h3>
+        <p class="text-justify"> {{aula.conteudo|linebreaksbr}}
 
-      <div class="container ">
-        <p class="mb-5 ">{{aula.conteudo}}</p>
+        </p>
+
       </div>
-      
-      
-      <hr>
-      
-      <h5 class="text-uppercase mb-3 font-weight-bold singleClass__subtitle">Data e horário</h5>
-      <h6>{{aula.data_aula}}</h6>
-   
+
+      <div class="container pr-0">
+        <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Local & data</h4>
+
+        <div class="container px-0 mb-5">
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Data e horário</h6>
+            <p>{{aula.data_aula}}</p>
+          </div>
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Local</h6>
+            <p>Sala: {{aula.sala.nome}}</p>
+          </div>
+        </div>
+
+        <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Aluno</h4>
+        <div class="container px-0 mb-5">
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Dados do aluno</h6>
+
+            <p>Nome: {{aula.aluno.nome}}</p>
+            <div class="container px-0 text-justify mb-3">{{aula.aluno.perfil}}</div>
+            <p>Celular: {{aula.aluno.celular}}</p>
+            <p>Telefone: {{aula.aluno.telefone}}</p>
+          </div>
+
+          <div class="container mb-4 px-0">
+            <h6 class="text-dark">Dados escolares</h6>
+            <p>Colégio: {{aula.aluno.colegio}} - Série: {{aula.aluno.serie}}</p>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
 
-    
-  
-</div>
 
-{% endblock content %}
+
+  </div>
+  {% endblock content %}

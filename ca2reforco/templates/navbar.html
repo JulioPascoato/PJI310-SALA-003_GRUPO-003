@@ -4,12 +4,17 @@
 <nav class="navbar navbar-expand-md navbar-light">
   <a class="navbar-brand" href="{% url 'aulas' %}"><img src="{% static 'images/logo2.png' %}" height="150" alt=""></a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto text-uppercase">
+      <li class="nav-item mx-2">
+        <a class="nav-link text-warning" href="{% url 'aulas' %}">Aulas</a>
+      </li>
+
       <li class="nav-item mx-2">
         <a class="nav-link text-warning" href="{% url 'alunos' %}">Alunos</a>
       </li>
@@ -25,17 +30,16 @@
       {% endif %}
 
       {% if request.user.is_authenticated %}
-          <li class="nav-item mx-2">
-            <a class="btn btn-outline-warning" href="{% url 'logout' %}">Logout</a>
-          </li>
+      <li class="nav-item mx-2">
+        <a class="btn btn-outline-warning" href="{% url 'logout' %}">Logout</a>
+      </li>
       {% else %}
-          <li class="nav-item mx-2">
-            <a class="btn btn-outline-warning" href="{% url 'login' %}">Login/Criar Conta</a>
-          </li>
+      <li class="nav-item mx-2">
+        <a class="btn btn-outline-warning" href="{% url 'login' %}">Login/Criar Conta</a>
+      </li>
       {% endif %}
-      
-      
+
+
     </ul>
   </div>
 </nav>
-
