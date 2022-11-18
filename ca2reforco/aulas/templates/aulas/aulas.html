@@ -1,35 +1,55 @@
 {% extends "main.html" %}
 
 {% block content %}
-    
-    <div class="container p-5 mb-4 search-class">
-        <div class="container text-center mb-4">
-          <h2 class="text-uppercase">Busque por <span class="text-dark font-weight-bold">Aulas</span></h2>
+
+
+<div class="container p-5">
+
+
+    <div class="container p-3">
+
+        {% for aula in aulas %}
+        <div class="row mb-4">
+            <div class="col-md-8 m-auto">
+                <a href="{% url 'aula' aula.id %}" class="text-secondary">
+                    <div class="card m-auto">
+                        <div class="card-body p-4">
+                            <div class="container text-left p-0">
+                                <h4 class="text-uppercase mb-4 font-weight-bold text-dark">{{aula.nome}}</h4>
+                                <p class="text-justify"><span class="text-dark font-weight-bold">Conteúdo:</span>
+                                    {{aula.conteudo|linebreaksbr|slice:150}}
+                                </p>
+
+                                <div class="container px-0">
+                                    <p class="text-justify"><span class="text-dark font-weight-bold">Data &
+                                            Horário:</span>
+                                        {{aula.data_aula}}
+                                    </p>
+                                </div>
+
+                                <div class="container px-0">
+                                    <p class="text-justify"><span class="text-dark font-weight-bold">Aluno:</span>
+                                        {{aula.aluno.nome}}
+                                    </p>
+                                </div>
+
+                                <div class="container px-0">
+                                    <p class="text-justify"><span class="text-dark font-weight-bold">Sala:</span>
+                                        {{aula.sala}}
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+
         </div>
-
-        <form action="#" method="get">
-                <div class="row mx-5 ">
-                        <div class="col-md-8 mb-3">
-                            <input class="form-control " id="formInput#search" type="text" name="text" placeholder="Busque pela data" />
-                        </div>
-                        <div class="col-md-4">
-                            <input class="btn btn-warning px-5 " type="submit" value="Buscar" />
-                        </div>
-                </div>
-        
-            
-        </form>
+        {% endfor %}
     </div>
-  
-<h1>Template Aulas</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quae asperiores eos praesentium, exercitationem, explicabo enim ab at blanditiis in sit nobis quas aut aspernatur adipisci quisquam doloremque officiis quos.</p>
-
-<ul>
-    {% for aula in  aulas %}
-        <a href="{% url 'aula' aula.id %}" class="text-secondary">
-            <li class="mb-3"> Nome: {{aula.nome}} --- {{aula.conteudo}}</li>
-        </a>
-    {% endfor %}
-</ul>
+</div>
 
 {% endblock content %}
