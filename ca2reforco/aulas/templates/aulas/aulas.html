@@ -5,6 +5,25 @@
 
 <div class="container p-5">
 
+    <div class="container p-5 mb-4 search-class">
+        <div class="container text-center mb-4">
+            <h2 class="text-uppercase">Busque por <span class="text-dark font-weight-bold">Aulas</span></h2>
+        </div>
+
+        <form action="{% url 'aulas' %}" method="get">
+            <div class="row mx-5 ">
+                <div class="col-md-8 mb-3">
+                    <input class="form-control " id="formInput#search" type="text" name="search_query"
+                        value="{{search_query}}" placeholder="Busque pela data" />
+                </div>
+                <div class="col-md-4">
+                    <input class="btn btn-warning px-5 " type="submit" value="Buscar" />
+                </div>
+            </div>
+
+
+        </form>
+    </div>
 
     <div class="container p-3">
 
@@ -15,8 +34,10 @@
                     <div class="card m-auto">
                         <div class="card-body p-4">
                             <div class="container text-left p-0">
-                                <h4 class="text-uppercase mb-4 font-weight-bold text-dark">{{aula.nome}}</h4>
-                                <p class="text-justify"><span class="text-dark font-weight-bold">Conteúdo:</span>
+                                <h5 class="text-uppercase mb-4 font-weight-bold text-dark border-bottom pb-1">
+                                    {{aula.nome}}
+                                </h5>
+                                <p class="text-justify pr-4"><span class="text-dark font-weight-bold">Conteúdo:</span>
                                     {{aula.conteudo|linebreaksbr|slice:150}}
                                 </p>
 
@@ -25,6 +46,11 @@
                                             Horário:</span>
                                         {{aula.data_aula}}
                                     </p>
+
+                                    <p class="text-justify"><span class="text-dark font-weight-bold">Duração: </span>
+                                        {{aula.pacote.duracao_aula}}
+                                    </p>
+
                                 </div>
 
                                 <div class="container px-0">

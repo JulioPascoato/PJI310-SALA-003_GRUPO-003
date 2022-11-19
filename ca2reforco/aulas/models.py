@@ -30,6 +30,7 @@ class Aula(models.Model):
 class Pacote(models.Model):
     tipo = models.CharField(max_length=200)
     quantidade_aulas = models.CharField(max_length=200)
+    duracao_aula = models.TimeField(null=True, blank=True)
     valor = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,

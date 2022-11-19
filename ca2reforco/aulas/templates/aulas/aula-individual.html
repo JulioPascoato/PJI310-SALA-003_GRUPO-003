@@ -10,13 +10,12 @@
         <div class="card-body p-5">
           <i class="fa fa-people-arrows fa-9x"></i>
           <h3 class="text-dark font-weight-bold mt-4">{{aula.disciplina}}</h3>
-          <div class="container font-weight-bold text-dark">
-            Professor: <a class=" text-muted" href="{% url 'professor' aula.professor.id %}">{{aula.professor.nome}}</a>
-          </div>
+          <span class="text-dark font-weight-bold">Professor: </span><a class=" text-muted"
+            href="{% url 'professor' aula.professor.id %}">{{aula.professor.nome}}</a>
+          <hr>
+          <span class="text-dark font-weight-bold">Aluno: </span><a class="text-muted"
+            href="{% url 'aluno' aula.aluno.id %}">{{aula.aluno.nome}}</a>
 
-          <div class="container font-weight-bold text-dark">
-            Aluno: <a class="text-muted" href="{% url 'aluno' aula.aluno.id %}">{{aula.aluno.nome}}</a>
-          </div>
 
         </div>
       </div>

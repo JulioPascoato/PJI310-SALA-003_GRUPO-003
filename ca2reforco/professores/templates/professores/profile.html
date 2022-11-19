@@ -2,70 +2,70 @@
 
 {% block content %}
 
-    <div class="container">
+<div class="container">
   <div class="row">
 
     <div class="col-md-12 col-lg-4 mb-5">
       <div class="card text-center mr-2">
-            <div class="card-body p-5">
-                <img class="rounded-circle border border-warning w-75" src="{{professor.imagem_perfil.url}}" />
-              <h3 class="text-dark font-weight-bold mt-4">{{professor.nome}}</h3>
-              <p class="font-weight-bolder">{{professor.introducao}}</p>
-              <p class="mb-5">{{professor.localizacao}}</p>
+        <div class="card-body p-5">
+          <img class="rounded-circle border border-warning w-75" src="{{professor.imagem_perfil.url}}" />
+          <h3 class="text-dark font-weight-bold mt-4">{{professor.nome}}</h3>
+          <p class="font-weight-bolder">{{professor.introducao}}</p>
+          <p class="mb-5">{{professor.localizacao}}</p>
 
-               <input type="submit" class="btn btn-dark btn-block btn-lg" value="Enviar Mensagem">
+          <input type="submit" class="btn btn-dark btn-block btn-lg" value="Enviar Mensagem">
 
-            </div>
         </div>
+      </div>
     </div>
 
 
     <div class="col pr-5">
 
-        <div class="container mb-5">
-            <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Sobre Mim</h4>
-            <p class="text-justify"> {{professor.bio}}
-              
-            </p>
-        </div>
-      
-        <div class="container pr-0">
-            <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Habilidades</h4>
+      <div class="container mb-5">
+        <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Sobre Mim</h4>
+        <p class="text-justify"> {{professor.bio}}
 
-            <div class="container px-0 mb-5">
+        </p>
+      </div>
 
-               {% for skill in topSkills %}
-                   <div class="container px-0 mb-4 d-flex flex-column flex-md-row">
-                   
-                    <div class="w-25 mr-3">
-                      <h6 class="text-dark" >{{skill.nome|title}}</h6>
-                    </div>
-                      
-                      <div class="w-75 text-justify">
-                      {{ skill.descricao}}
-                    </div>
-                                  
-                  </div>
-              {% endfor %} 
-             
+      <div class="container pr-0">
+        <h4 class="text-uppercase mb-4 font-weight-bold text-dark">Habilidades</h4>
 
-              
-            <h5 class="text-uppercase mb-4 mt-5 font-weight-bold singleClass__subtitle">Outras habilidades</h5>
-              <div class="container pl-0">
-                {% for skill in otherSkills %}
-                  <span class="rounded-pill d-inline-flex px-5 py-2 mr-2 mb-2 text-dark search-class">
-                    <h6 class="m-0">{{skill.nome|title}}</h6>
-                  </span>
-                {% endfor %}
-              </div>
+        <div class="container px-0 mb-5">
 
+          {% for skill in topSkills %}
+          <div class="container px-0 mb-4 d-flex flex-column flex-md-row">
+
+            <div class="w-25 mr-3">
+              <h6 class="text-dark">{{skill.nome|title}}</h6>
             </div>
+
+            <div class="w-75 text-justify">
+              {{ skill.descricao}}
+            </div>
+
+          </div>
+          {% endfor %}
+
+
+
+          <h5 class="text-uppercase mb-4 mt-5 font-weight-bold singleClass__subtitle">Outras habilidades</h5>
+          <div class="container pl-0">
+            {% for skill in otherSkills %}
+            <span class="rounded-pill d-inline-flex px-5 py-2 mr-2 mb-2 text-dark search-class">
+              <h6 class="m-0">{{skill.nome|title}}</h6>
+            </span>
+            {% endfor %}
+          </div>
+
         </div>
-      
-   
+      </div>
+
+
     </div>
 
-    
-  
-</div>
-{% endblock content %}
+
+
+  </div>
+  {% endblock content %}

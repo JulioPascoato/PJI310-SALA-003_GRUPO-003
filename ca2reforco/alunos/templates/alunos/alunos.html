@@ -9,11 +9,11 @@
             <h2 class="text-uppercase">Busque por <span class="text-dark font-weight-bold">Alunos</span></h2>
         </div>
 
-        <form action="#" method="get">
+        <form action="{% url 'alunos' %}" method="get">
             <div class="row mx-5 ">
                 <div class="col-md-8 mb-3">
-                    <input class="form-control " id="formInput#search" type="text" name="text"
-                        placeholder="Busque pelo nome do aluno" />
+                    <input class="form-control " id="formInput#search" type="text" name="search_query"
+                        value="{{search_query}}" placeholder="Busque pelo nome do aluno" />
                 </div>
                 <div class="col-md-4">
                     <input class="btn btn-warning px-5 " type="submit" value="Buscar" />

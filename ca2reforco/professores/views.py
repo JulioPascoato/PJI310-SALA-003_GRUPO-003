@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 
 from django.contrib import messages
-from .models import Professor
+from .models import Professor, Habilidade
 
+from django.db.models import Q
 from .forms import CustomUserCreationForm, ProfessorForm, HabilidadeForm
 
 from django.contrib.auth.decorators import login_required
@@ -44,9 +45,20 @@ def logoutUser(request):
 
 
 def professores(request):
-    professores = Professor.objects.all()
+    search_query = ''
+
+    if request.GET.get('search_query'):
+        search_query = request.GET.get('search_query')
+
+    skills = Habilidade.objects.filter(nome__icontains=search_query)
+
+    professores = Professor.objects.distinct().filter(
+        Q(nome__icontains=search_query) |
+        Q(introducao__icontains=search_query) |
+        Q(habilidade__in=skills))
     content = {
-        'professores': professores
+        'professores': professores,
+        'search_query': search_query
     }
     return render(request, 'professores/profiles.html', content)
 
