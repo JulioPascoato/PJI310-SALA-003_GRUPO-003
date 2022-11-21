@@ -2,7 +2,6 @@ from django.db import models
 import uuid
 from professores.models import Professor
 from alunos.models import Aluno
-
 # Create your models here.
 
 

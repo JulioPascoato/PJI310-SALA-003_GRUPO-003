@@ -11,16 +11,26 @@
         </div>
 
         <form action="{% url 'aulas' %}" method="get">
-            <div class="row mx-5 ">
-                <div class="col-md-8 mb-3">
-                    <input class="form-control " id="formInput#search" type="text" name="search_query"
-                        value="{{search_query}}" placeholder="Busque pela data" />
+
+            <div class="form-group">
+                <label for="{{myFilter.form.aluno.auto_id}}">{{myFilter.form.aluno.label}}</label>
+                {{myFilter.form.aluno}}
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="{{myFilter.form.aluno.start_date}}">Data Inicial</label>
+                    {{myFilter.form.start_date}}
                 </div>
-                <div class="col-md-4">
-                    <input class="btn btn-warning px-5 " type="submit" value="Buscar" />
+                <div class="form-group col-md-6">
+                    <label for="{{myFilter.form.aluno.end_date}}">Data Final</label>
+                    {{myFilter.form.end_date}}
                 </div>
             </div>
 
+
+
+            <button type="submit" class="btn btn-warning">Buscar</button>
 
         </form>
     </div>

@@ -5,6 +5,7 @@ from .forms import AulaForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from .filters import AulaFilter
 
 
 # Create your views here.
@@ -18,17 +19,20 @@ def aulas(request):
         search_query = request.GET.get('search_query')
 
     if request.user.is_staff == True:
-        aulas_all = Aula.objects.all()
-        aulas = aulas_all.filter(nome__icontains=search_query)
+        aulas = Aula.objects.all()
+        myFilter = AulaFilter(request.GET, queryset=aulas)
+        aulas = myFilter.qs
     else:
-        aulas_all = Aula.objects.order_by('-data_aula').filter(
+        aulas = Aula.objects.order_by('-data_aula').filter(
             professor=request.user.professor)
-        aulas = aulas_all.filter(
-            nome__icontains=search_query)
+
+    myFilter = AulaFilter(request.GET, queryset=aulas)
+    aulas = myFilter.qs
 
     context = {
         'aulas': aulas,
-        'search_query': search_query
+        'search_query': search_query,
+        'myFilter': myFilter
     }
 
     return render(request, 'aulas/aulas.html', context)
